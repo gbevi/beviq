@@ -587,9 +587,12 @@ export function Preloader() {
           Number.isFinite(clickInfo.x) &&
           Number.isFinite(clickInfo.y)
         ) {
-          const ce = (now - clickInfo.t) / 1000;
+          // RAF's `now` is the vsync timestamp, which can land BEFORE the
+          // click event's performance.now() within the same frame. Clamp so
+          // Chrome doesn't throw IndexSizeError on a negative arc radius.
+          const ce = Math.max(0, (now - clickInfo.t) / 1000);
           if (ce < 1 && Number.isFinite(ce)) {
-            const r1 = ce * 720;
+            const r1 = Math.max(0, ce * 720);
             const a1 = Math.max(0, (1 - ce) * 0.85);
             ctx.strokeStyle = `rgba(255,255,255,${a1})`;
             ctx.lineWidth = 1.8;
@@ -597,7 +600,7 @@ export function Preloader() {
             ctx.arc(clickInfo.x, clickInfo.y, r1, 0, Math.PI * 2);
             ctx.stroke();
 
-            const r2 = ce * 1180;
+            const r2 = Math.max(0, ce * 1180);
             const a2 = Math.max(0, (1 - ce) * 0.35);
             ctx.strokeStyle = `rgba(255,255,255,${a2})`;
             ctx.lineWidth = 1;
@@ -867,7 +870,7 @@ export function Preloader() {
     };
     raf = requestAnimationFrame(tick);
 
-    const hintTimer = window.setTimeout(() => setHint(true), 1700);
+    const hintTimer = window.setTimeout(() => setHint(true), 250);
 
     return () => {
       cancelAnimationFrame(raf);
@@ -889,9 +892,9 @@ export function Preloader() {
     <div className="fixed inset-0 z-40 cursor-pointer select-none bg-fundo">
       <canvas ref={canvasRef} className="block h-full w-full" />
       {phase === "field" && hint && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-12 grid place-items-center text-center text-xs uppercase tracking-[0.35em] text-fosforo md:text-sm">
-          <span className="opacity-70 [animation:pulse_1.4s_ease-in-out_infinite]">
-            [ click anywhere ]
+        <div className="pointer-events-none absolute inset-x-0 bottom-12 grid place-items-center text-center font-mono text-sm uppercase tracking-[0.4em] text-fosforo md:bottom-16 md:text-base">
+          <span className="rounded-sm bg-fundo/55 px-3 py-1.5 backdrop-blur-[2px] [animation:pulse_1.4s_ease-in-out_infinite]">
+            [ clique em qualquer lugar ]
           </span>
         </div>
       )}
