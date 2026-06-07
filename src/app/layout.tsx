@@ -5,6 +5,8 @@ import {
   Bricolage_Grotesque,
   Familjen_Grotesk,
 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Preloader } from "@/components/preloader";
 import { Nav } from "@/components/nav";
 import "./globals.css";
@@ -53,6 +55,8 @@ export default function RootLayout({
         <Preloader />
         <Nav />
         <main className="relative">{children}</main>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
