@@ -38,9 +38,9 @@ const familjen = Familjen_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "beviq — sites e agentes",
+  title: "beviq · sistemas e agentes",
   description:
-    "Estúdio de sites institucionais, landing pages e agentes de IA. Construído à mão, calibrado pra cada uso.",
+    "Sistemas e agentes feitos à mão. Engenharia e opinião contra o digital genérico da era agêntica, pensados pra durar.",
 };
 
 export default function RootLayout({

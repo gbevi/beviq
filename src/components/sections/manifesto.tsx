@@ -12,7 +12,7 @@ export function Manifesto() {
           <div className="max-w-3xl space-y-6 text-base leading-relaxed text-linha md:text-lg">
             <p>
               a beviq surgiu de um cansaço: sites iguais, sistemas iguais,
-              digital descartável que se acumula na era das agências.
+              digital descartável que se acumula na era agêntica.
             </p>
             <p>
               foi moldada pela engenharia de software. processo pensado,

@@ -163,11 +163,16 @@ export function Preloader() {
       els.forEach((el) => {
         const r = el.getBoundingClientRect();
         if (r.width > 0 && r.height > 0) {
+          // Shrink the vertical mask to the glyph cap-height (≈ 50% of the line-box).
+          // Line boxes include leading above/below the actual ink, which leaves a
+          // visible gap of un-rendered chars above/below the visible text otherwise.
+          const midY = (r.top + r.bottom) / 2;
+          const halfH = (r.bottom - r.top) * 0.28;
           maskRects.push({
             left: r.left,
             right: r.right,
-            top: r.top,
-            bottom: r.bottom,
+            top: midY - halfH,
+            bottom: midY + halfH,
           });
         }
       });
@@ -475,7 +480,7 @@ export function Preloader() {
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
 
-      const maskMargin = Math.max(4, profile.pixelFontPx);
+      const maskMargin = Math.max(2, profile.pixelFontPx / 2);
       const ph = phaseRef.current;
 
       if (ph === "field") {

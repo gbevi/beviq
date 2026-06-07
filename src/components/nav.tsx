@@ -47,7 +47,7 @@ export function Nav() {
         <Link href="/" aria-label="beviq" className="flex items-baseline gap-2">
           <ScrambleLogo />
         </Link>
-        <ul className="flex gap-3 md:gap-6">
+        <ul className="flex gap-2 md:gap-4">
           {items.map((it) => (
             <li key={it.href}>
               <ScrambleNavLink href={it.href} label={it.label} />
