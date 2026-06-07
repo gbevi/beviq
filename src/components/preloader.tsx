@@ -377,6 +377,9 @@ export function Preloader() {
     setup();
     updateMasks();
     const initMaskTimer = window.setTimeout(updateMasks, 120);
+    // Re-mask after the click hint appears (setHint fires at 250ms) so the
+    // binary rain doesn't render behind its text.
+    const hintMaskTimer = window.setTimeout(updateMasks, 320);
 
     const onResize = () => {
       if (phaseRef.current === "field") setup();
@@ -876,6 +879,7 @@ export function Preloader() {
       cancelAnimationFrame(raf);
       clearTimeout(hintTimer);
       clearTimeout(initMaskTimer);
+      clearTimeout(hintMaskTimer);
       for (const tm of timers) clearTimeout(tm);
       window.removeEventListener("resize", onResize);
       window.removeEventListener("pointermove", onMove);
@@ -892,8 +896,11 @@ export function Preloader() {
     <div className="fixed inset-0 z-40 cursor-pointer select-none bg-fundo">
       <canvas ref={canvasRef} className="block h-full w-full" />
       {phase === "field" && hint && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-12 grid place-items-center text-center font-mono text-sm uppercase tracking-[0.4em] text-fosforo md:bottom-16 md:text-base">
-          <span className="rounded-sm bg-fundo/55 px-3 py-1.5 backdrop-blur-[2px] [animation:pulse_1.4s_ease-in-out_infinite]">
+        <div className="pointer-events-none absolute inset-x-0 bottom-12 grid place-items-center text-center font-mono text-[11px] uppercase tracking-[0.4em] text-fosforo md:bottom-16 md:text-xs">
+          <span
+            data-mask
+            className="[animation:pulse_1.4s_ease-in-out_infinite]"
+          >
             [ clique em qualquer lugar ]
           </span>
         </div>
