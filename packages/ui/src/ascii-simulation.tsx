@@ -5,8 +5,8 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import type { Group } from "three";
 
-import { SafeAsciiRenderer } from "@/components/v1/ascii-renderer";
-import { ProceduralTree } from "@/components/v1/procedural-tree";
+import { SafeAsciiRenderer } from "./ascii-renderer";
+import { ProceduralTree } from "./procedural-tree";
 
 type AsciiSimulationProps = {
   modelPath?: string;
