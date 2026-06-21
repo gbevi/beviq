@@ -1,6 +1,4 @@
-"use client";
-
-import { useScramble } from "@/hooks/use-scramble";
+import { ScrambleText } from "@/components/scramble-text";
 
 type Props = {
   href: string;
@@ -19,7 +17,6 @@ export function ScrambleAnchor({
   rel,
   "aria-label": ariaLabel,
 }: Props) {
-  const { display, onMouseEnter, onFocus } = useScramble(text);
   return (
     <a
       href={href}
@@ -27,10 +24,8 @@ export function ScrambleAnchor({
       target={target}
       rel={rel}
       aria-label={ariaLabel ?? text}
-      onMouseEnter={onMouseEnter}
-      onFocus={onFocus}
     >
-      {display}
+      <ScrambleText text={text} />
     </a>
   );
 }

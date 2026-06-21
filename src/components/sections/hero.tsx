@@ -9,9 +9,9 @@ export function Hero() {
       id="topo"
       className="relative min-h-dvh w-full overflow-hidden bg-fundo text-linha"
     >
-      <div className="relative flex min-h-dvh flex-col px-4 pt-20 pb-16 md:px-10 md:pb-24">
-        <div className="flex flex-1 items-center justify-center py-6 md:py-10">
-          <div className="aspect-square h-[44vh] md:h-[48vh]">
+      <div className="relative flex min-h-dvh flex-col px-4 pt-12 pb-12 md:px-10 md:pt-14 md:pb-14">
+        <div className="flex flex-1 items-center justify-center py-2 md:py-4">
+          <div className="aspect-square h-[40vh] md:h-[44vh]">
             <AsciiSimulation className="h-full w-full" />
           </div>
         </div>
@@ -24,9 +24,9 @@ export function Hero() {
             <CyclingWord words={WORDS} className="text-fosforo" />.
           </h1>
           <p className="mt-8 max-w-[44ch] text-base leading-relaxed text-linha/85 md:text-lg">
-            sistemas e <span className="text-brasa">agentes</span> sob medida.
+            Sistemas e <span className="text-brasa">agentes</span> sob medida.
             <br />
-            feitos à mão, calibrados caso a caso.
+            Feitos à mão, calibrados caso a caso.
           </p>
         </div>
       </div>

@@ -1,19 +1,19 @@
 const services = [
   {
     name: "sistemas sob medida",
-    desc: "construído à mão, calibrado caso a caso. feito pra ser herdado.",
+    desc: "Construído à mão, calibrado caso a caso. Feito pra ser herdado.",
   },
   {
     name: "agentes",
-    desc: "voz, função e limites calibrados pra você.",
+    desc: "Voz, função e limites calibrados pra você.",
   },
   {
     name: "resgate",
-    desc: "mão profissional em sistema que já está em uso. a operação não muda de ritmo.",
+    desc: "Mão profissional em sistema que já está em uso. A operação não muda de ritmo.",
   },
   {
     name: "manutenção contínua",
-    desc: "cuidado constante do que está em operação. atualizar, ajustar, prevenir.",
+    desc: "Cuidado constante do que está em operação. Atualizar, ajustar, prevenir.",
   },
 ];
 
@@ -29,10 +29,10 @@ export function Capabilities() {
         </h2>
 
         <p className="mb-32 max-w-[62ch] text-lg leading-relaxed text-linha/85 md:mb-48 md:text-xl">
-          sistemas e agentes feitos à mão pra empresas que não querem virar
+          Sistemas e agentes feitos à mão pra empresas que não querem virar
           mais um.
           <br />
-          assinatura própria, pensada pra durar.
+          Assinatura própria, pensada pra durar.
         </p>
 
         <ul className="space-y-16 md:space-y-20">

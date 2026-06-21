@@ -64,3 +64,27 @@
     }
   }
 }
+
+/* preview da hero na lista de trabalhos: a linha cresce e acomoda a imagem */
+.work-reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 450ms ease-out;
+}
+.work-reveal-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+/* touch: abre/fecha no toque (classe is-open), sem hover grudento */
+@media (hover: none) {
+  .is-open .work-reveal {
+    grid-template-rows: 1fr;
+  }
+}
+/* só dispositivos com hover real: abre no hover/foco */
+@media (hover: hover) {
+  .group:hover .work-reveal,
+  .group:focus-visible .work-reveal {
+    grid-template-rows: 1fr;
+  }
+}

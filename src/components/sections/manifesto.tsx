@@ -11,15 +11,15 @@ export function Manifesto() {
         <div className="grid gap-12 md:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] md:gap-20">
           <div className="max-w-3xl space-y-6 text-base leading-relaxed text-linha md:text-lg">
             <p>
-              a beviq surgiu de um cansaço: sites iguais, sistemas iguais,
+              A beviq surgiu de um cansaço: sites iguais, sistemas iguais,
               digital descartável que se acumula na era agêntica.
             </p>
             <p>
-              foi moldada pela engenharia de software. processo pensado,
+              Foi moldada pela engenharia de software. Processo pensado,
               escalabilidade desde o desenho, qualidade que se mede no tempo.
             </p>
             <p>
-              o trabalho começa com uma pergunta antes da proposta. cada peça
+              O trabalho começa com uma pergunta antes da proposta. Cada peça
               é calibrada à mão, feita pra ser herdada.
             </p>
           </div>

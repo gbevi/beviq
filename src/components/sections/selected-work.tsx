@@ -1,135 +1,121 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
-function FeaturedVideo({ name }: { name: string }) {
-  const ref = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    const v = ref.current;
-    if (!v) return;
-    v.muted = true;
-    const tryPlay = () => {
-      const p = v.play();
-      if (p && typeof p.then === "function") {
-        p.catch(() => {});
-      }
-    };
-    tryPlay();
-    v.addEventListener("loadeddata", tryPlay);
-    v.addEventListener("canplay", tryPlay);
-    return () => {
-      v.removeEventListener("loadeddata", tryPlay);
-      v.removeEventListener("canplay", tryPlay);
-    };
-  }, []);
-
-  return (
-    <video
-      ref={ref}
-      className="block h-auto w-full"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="auto"
-      poster={`/videos/${name}.jpg`}
-    >
-      <source src={`/videos/${name}.webm`} type="video/webm" />
-      <source src={`/videos/${name}.mp4`} type="video/mp4" />
-    </video>
-  );
-}
-
-function WorkId({ children }: { children: React.ReactNode }) {
-  return (
-    <header className="font-mono text-xs uppercase tracking-[0.2em] text-poeira md:text-sm">
-      {children}
-    </header>
-  );
-}
+import { ScrambleText } from "@/components/scramble-text";
+import { works } from "@/lib/works";
 
 export function SelectedWork() {
+  // no mobile (sem hover) o preview abre/fecha no toque; no desktop é no hover
+  const [openSlug, setOpenSlug] = useState<string | null>(null);
+
   return (
     <section
       id="trabalhos"
       className="bg-fundo px-4 py-24 text-linha md:px-10 md:py-40"
     >
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-20 font-display text-[clamp(2.5rem,8vw,5.5rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] md:mb-32">
+        <h2 className="mb-16 font-display text-[clamp(2.5rem,8vw,5.5rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] md:mb-24">
           trabalhos
         </h2>
 
-        <div className="space-y-32 md:space-y-48">
-          {/* ID001 — duas pilhas vídeo+texto em lados opostos */}
-          <article className="space-y-20 md:space-y-32">
-            <WorkId>ID001</WorkId>
+        <ul className="border-t border-vidro">
+          {works.map((work) => {
+            const cover = work.hero?.[0];
+            return work.wip ? (
+              // projeto em construção: apagado, sem hover e sem link
+              <li key={work.slug}>
+                <div
+                  aria-disabled="true"
+                  className="flex cursor-default flex-col gap-2 border-b border-vidro py-5 opacity-40 md:flex-row md:items-baseline md:justify-between md:gap-8 md:py-6"
+                >
+                  <span className="flex items-baseline gap-3 text-lg text-linha md:text-xl">
+                    <span className="font-mono text-sm text-poeira">
+                      {work.id}
+                    </span>
+                    <span className="font-display tracking-tight">
+                      {work.title}
+                    </span>
+                  </span>
+                  <span className="flex items-baseline gap-4 font-mono text-[11px] uppercase tracking-[0.2em] text-poeira md:gap-8 md:text-xs">
+                    <span>{work.category}</span>
+                    <span className="text-poeira/70">{work.location}</span>
+                  </span>
+                </div>
+              </li>
+            ) : (
+              <li
+                key={work.slug}
+                className={`group border-b border-vidro ${openSlug === work.slug ? "is-open" : ""}`}
+              >
+                <Link
+                  href={`/trabalhos/${work.slug}`}
+                  onClick={(e) => {
+                    // no touch: primeiro toque abre/fecha o preview, não navega
+                    if (
+                      cover &&
+                      typeof window !== "undefined" &&
+                      window.matchMedia("(hover: none)").matches
+                    ) {
+                      e.preventDefault();
+                      setOpenSlug((cur) =>
+                        cur === work.slug ? null : work.slug,
+                      );
+                    }
+                  }}
+                  className="flex flex-col gap-2 py-5 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-8 md:py-6"
+                >
+                  <span className="flex items-baseline gap-3 text-lg text-linha transition-colors group-hover:text-fosforo md:text-xl">
+                    <span className="font-mono text-sm text-poeira transition-colors group-hover:text-brasa">
+                      {work.id}
+                    </span>
+                    <ScrambleText
+                      text={work.title}
+                      className="font-display tracking-tight"
+                    />
+                  </span>
+                  <span className="flex items-baseline gap-4 font-mono text-[11px] uppercase tracking-[0.2em] text-poeira transition-colors group-hover:text-brasa md:gap-8 md:text-xs">
+                    <span>{work.category}</span>
+                    <span className="text-poeira/70">{work.location}</span>
+                  </span>
+                </Link>
 
-            <div className="grid gap-6 md:grid-cols-12 md:gap-8">
-              <div className="md:col-span-8 md:col-start-1">
-                <FeaturedVideo name="midlej1" />
-              </div>
-              <div className="md:col-span-5 md:col-start-1">
-                <p className="text-base leading-relaxed md:text-lg">
-                  repaginação de site institucional. a intenção foi trazer
-                  opinião pra marca sem perder a calma.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-12 md:gap-8">
-              <div className="md:col-span-7 md:col-start-6">
-                <FeaturedVideo name="midlej2" />
-              </div>
-              <div className="md:col-span-4 md:col-start-9">
-                <p className="text-base leading-relaxed md:text-lg">
-                  tipografia decidida, ritmo de leitura próprio, animações 3d
-                  que carregam presença sem dominar.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          {/* ID002 — vídeo esquerda + texto direita, mesma linha */}
-          <article className="space-y-14 md:space-y-20">
-            <WorkId>ID002</WorkId>
-
-            <div className="grid items-center gap-8 md:grid-cols-12 md:gap-12">
-              <div className="md:col-span-8 md:col-start-1">
-                <FeaturedVideo name="claraval1" />
-              </div>
-              <div className="md:col-span-3 md:col-start-10">
-                <p className="text-sm leading-relaxed md:text-base">
-                  sistema interno para gestão de contratos. a feature em
-                  destaque combina medidas estratégicas, okrs e tarefas em um
-                  só lugar, traduzindo um conceito normalmente difuso em uma
-                  vista que qualquer pessoa do time lê de ponta a ponta.
-                  aprofundamento nas regras de negócio e personalização nos
-                  detalhes.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          {/* ID003 — vídeo wide, texto logo abaixo deslocado à direita */}
-          <article className="space-y-8 md:space-y-12">
-            <WorkId>ID003</WorkId>
-
-            <div>
-              <FeaturedVideo name="obsidian1" />
-            </div>
-
-            <div className="md:grid md:grid-cols-12">
-              <p className="text-base leading-relaxed md:col-span-6 md:col-start-7 md:text-lg">
-                demonstração do princípio por trás dos agentes, montada em
-                obsidian. uma empresa transformada em fonte queryable para um
-                agente, unificada num single source of truth, com governança
-                da informação acessível a qualquer agente em custo econômico
-                de tokens.
-              </p>
-            </div>
-          </article>
-        </div>
+                {/* a hero abre acomodada: no hover (desktop) ou no toque (mobile) */}
+                {cover && (
+                  <div className="work-reveal">
+                    <div className="work-reveal-inner">
+                      <div className="flex justify-start pb-6 pt-1 md:justify-end">
+                        <Link
+                          href={`/trabalhos/${work.slug}`}
+                          aria-label={`Abrir ${work.title}`}
+                          style={{
+                            width: 320,
+                            maxWidth: "100%",
+                            position: "relative",
+                            zIndex: 3,
+                          }}
+                          className="block"
+                        >
+                          <Image
+                            src={cover.src}
+                            alt=""
+                            width={cover.width}
+                            height={cover.height}
+                            sizes="320px"
+                            style={{ width: "100%", height: "auto" }}
+                            className="block border border-vidro shadow-2xl shadow-black/40"
+                          />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );
