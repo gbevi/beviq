@@ -1,96 +1,9 @@
 "use client";
 
-import { Suspense, useLayoutEffect, useMemo, useRef } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
-import { AsciiEffect } from "three-stdlib";
+import { useLayoutEffect, useMemo, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 import { Vector3 } from "three";
 import type { Group, Mesh } from "three";
-
-type SafeAsciiRendererProps = {
-  characters?: string;
-  resolution?: number;
-  invert?: boolean;
-  fgColor?: string;
-  bgColor?: string;
-};
-
-function isValidSize(w: number, h: number) {
-  return (
-    Number.isFinite(w) && Number.isFinite(h) && w > 0 && h > 0
-  );
-}
-
-function SafeAsciiRenderer({
-  characters = " .:-+*=%@#",
-  resolution = 0.15,
-  invert = false,
-  fgColor = "#FFFFFF",
-  bgColor = "transparent",
-}: SafeAsciiRendererProps) {
-  const gl = useThree((s) => s.gl);
-  const scene = useThree((s) => s.scene);
-  const camera = useThree((s) => s.camera);
-  const size = useThree((s) => s.size);
-  const effectRef = useRef<AsciiEffect | null>(null);
-
-  useLayoutEffect(() => {
-    if (!isValidSize(size.width, size.height)) return;
-
-    const effect = new AsciiEffect(gl, characters, {
-      invert,
-      resolution,
-    });
-    effect.domElement.style.position = "absolute";
-    effect.domElement.style.top = "0px";
-    effect.domElement.style.left = "0px";
-    effect.domElement.style.pointerEvents = "none";
-    effect.domElement.style.color = fgColor;
-    effect.domElement.style.backgroundColor = bgColor;
-    effect.setSize(size.width, size.height);
-
-    const parent = gl.domElement.parentNode;
-    if (parent) {
-      parent.appendChild(effect.domElement);
-      gl.domElement.style.opacity = "0";
-    }
-
-    effectRef.current = effect;
-
-    return () => {
-      effectRef.current = null;
-      if (parent && effect.domElement.parentNode === parent) {
-        parent.removeChild(effect.domElement);
-      }
-      gl.domElement.style.opacity = "1";
-    };
-  }, [gl, characters, invert, resolution, fgColor, bgColor]);
-
-  useLayoutEffect(() => {
-    const effect = effectRef.current;
-    if (!effect) return;
-    if (!isValidSize(size.width, size.height)) return;
-    effect.setSize(size.width, size.height);
-  }, [size]);
-
-  useFrame(() => {
-    const effect = effectRef.current;
-    if (!effect) return;
-    if (!isValidSize(size.width, size.height)) return;
-    effect.render(scene, camera);
-  }, 1);
-
-  return null;
-}
-
-type AsciiSimulationProps = {
-  modelPath?: string;
-  className?: string;
-  characters?: string;
-  resolution?: number;
-  fgColor?: string;
-  bgColor?: string;
-};
 
 const CLUSTERS: Array<{
   position: [number, number, number];
@@ -233,7 +146,7 @@ const BRANCHES: Array<{ from: V3; to: V3; rFrom: number; rTo: number }> = [
 const TRUNK_COLOR = "#909090";
 const BRANCH_COLOR = "#888888";
 
-function ProceduralTree() {
+export function ProceduralTree() {
   const treeRef = useRef<Group>(null);
   const canopyRef = useRef<Group>(null);
   useFrame((state, dt) => {
@@ -315,48 +228,5 @@ function ProceduralTree() {
         ))}
       </group>
     </group>
-  );
-}
-
-function GltfSubject({ path }: { path: string }) {
-  const ref = useRef<Group>(null);
-  const { scene } = useGLTF(path);
-  useFrame((_, dt) => {
-    if (!ref.current) return;
-    ref.current.rotation.y += dt * 0.18;
-  });
-  return <primitive ref={ref} object={scene} />;
-}
-
-export function AsciiSimulation({
-  modelPath,
-  className = "",
-  characters = " 01",
-  resolution = 0.2,
-  fgColor = "#FFFFFF",
-  bgColor = "transparent",
-}: AsciiSimulationProps) {
-  return (
-    <div className={`relative ${className}`}>
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 35 }}
-        gl={{ antialias: false, alpha: true }}
-        dpr={[1, 1.5]}
-      >
-        <ambientLight intensity={0.25} />
-        <directionalLight position={[5, 7, 4]} intensity={1.4} />
-        <directionalLight position={[-4, 2, -3]} intensity={0.4} />
-        <Suspense fallback={<ProceduralTree />}>
-          {modelPath ? <GltfSubject path={modelPath} /> : <ProceduralTree />}
-        </Suspense>
-        <SafeAsciiRenderer
-          fgColor={fgColor}
-          bgColor={bgColor}
-          characters={characters}
-          resolution={resolution}
-          invert={false}
-        />
-      </Canvas>
-    </div>
   );
 }
