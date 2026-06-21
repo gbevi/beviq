@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Compila o source TS/JSX dos packages do workspace (modelo copy-paste).
+  transpilePackages: ["@beviq/ui"],
 };
 
 export default nextConfig;

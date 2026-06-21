@@ -1,5 +1,5 @@
 import { CyclingWord } from "@/components/cycling-word";
-import { AsciiSimulation } from "@/components/v1/ascii-simulation";
+import { AsciiSimulation } from "@beviq/ui";
 
 const WORDS = ["gosto", "opinião", "criatividade", "elegância", "escolha"];
 

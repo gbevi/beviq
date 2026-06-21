@@ -1,17 +1,24 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Estrutura
+
+Monorepo com pnpm workspaces. O site mora na raiz e consome os packages via `workspace:*` (modelo copy-paste, nada publicado no npm):
+
+```
+beviq/
+  src/                site de marketing (Next, app router)
+  packages/
+    ui/               componentes (@beviq/ui), compilados via transpilePackages
+    config/           config TypeScript compartilhada (@beviq/config)
+```
+
 ## Getting Started
 
-First, run the development server:
+Instale as dependências e rode o servidor de desenvolvimento com pnpm:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
