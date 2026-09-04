@@ -3,19 +3,19 @@ import { Section, SectionHeading } from "@/components/sections/primitives";
 const services = [
   {
     name: "sistemas sob medida",
-    desc: "Construído à mão, calibrado caso a caso. Feito pra ser herdado.",
+    desc: "Ferramentas internas, painéis, web apps, saas pequenos e mvps. Automação operacional cai aqui. Construído à mão em volta do jeito que a sua operação já funciona.",
   },
   {
-    name: "agentes",
-    desc: "Voz, função e limites calibrados pra você.",
+    name: "sites",
+    desc: "Institucionais, landing pages, presença digital. Direção de arte, design das telas e código na mesma entrega.",
   },
   {
     name: "resgate",
-    desc: "Mão profissional em sistema que já está em uso. A operação não muda de ritmo.",
+    desc: "Sistema, site, automação, app ou marca que já existe e precisa de mão profissional. Diagnóstico escrito, depois retomada em fases. A operação não muda de ritmo.",
   },
   {
     name: "manutenção contínua",
-    desc: "Cuidado constante do que está em operação. Atualizar, ajustar, prevenir.",
+    desc: "Cuidado mensal do que está em operação: monitorar, atualizar, corrigir, prevenir. Um interlocutor, feito aqui ou não.",
   },
 ];
 
@@ -25,10 +25,10 @@ export function Capabilities() {
       <SectionHeading className="mb-10 md:mb-14">serviços</SectionHeading>
 
       <p className="mb-32 max-w-[62ch] text-lg leading-relaxed text-linha/85 md:mb-48 md:text-xl">
-        Sistemas e agentes feitos à mão pra empresas que não querem virar
+        Sistemas e sites feitos à mão pra empresas que não querem virar
         mais um.
         <br />
-        Assinatura própria, pensada pra durar.
+        Quatro linhas de trabalho, calibradas caso a caso, pensadas pra durar.
       </p>
 
       <ul className="space-y-16 md:space-y-20">
