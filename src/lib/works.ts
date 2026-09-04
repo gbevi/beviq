@@ -17,11 +17,13 @@ export type Work = {
   location: string;
   /** projeto existe mas ainda em construção: listado apagado e sem link */
   wip?: boolean;
+  /** hero em coluna única e sem recorte, para telas largas que precisam ser lidas */
+  heroFull?: boolean;
   /** site no ar do cliente, se houver */
   liveUrl?: string;
   /** parágrafo de abertura da página do trabalho */
   intro?: string;
-  /** par de imagens de destaque no topo da página */
+  /** imagens de destaque no topo da página */
   hero?: WorkImage[];
 };
 
@@ -62,9 +64,26 @@ export const works: Work[] = [
     slug: "nuree",
     id: "003",
     title: "Nuree",
-    category: "Wellness",
+    category: "Desenvolvimento de pessoas",
     location: "Brasília, Brasil",
-    wip: true,
+    heroFull: true,
+    liveUrl: "https://nuree.com.br",
+    intro:
+      "Consultoria que desenvolve pessoas, lideranças e negócios, e segue junto depois que a sala esvazia. O método é da casa. O trabalho foi dar casa ao método: identidade aplicada, site institucional e um sistema de gestão construído em cima dele.",
+    hero: [
+      {
+        src: "/trabalhos/nuree/site.png",
+        alt: "Abertura do site da Nuree com a chamada sobre excelência e o ipê ilustrado",
+        width: 1588,
+        height: 824,
+      },
+      {
+        src: "/trabalhos/nuree/jardim.png",
+        alt: "Tela de tarefas do sistema da Nuree na visão jardim, com o ciclo aberto",
+        width: 1642,
+        height: 958,
+      },
+    ],
   },
 ];
 

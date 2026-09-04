@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ScrambleText } from "@/components/scramble-text";
+import { NureeBody } from "@/components/works/nuree-body";
 import { SiteLink } from "@/components/works/site-link";
 import { UltreyaBody } from "@/components/works/ultreya-body";
 import { WorkShot } from "@/components/works/work-shot";
@@ -69,22 +70,36 @@ export default async function WorkPage({ params }: Params) {
 
         {work.liveUrl && <SiteLink href={work.liveUrl} className="mt-6" />}
 
-        {/* par de heros recortados em tiles iguais (Figma 831×674) */}
+        {/* heros: par recortado em tiles iguais (Figma 831×674) ou coluna inteira */}
         {work.hero && work.hero.length > 0 && (
-          <div className="mt-12 grid gap-4 md:mt-16 md:grid-cols-2 md:gap-[3.8%]">
+          <div
+            className={
+              work.heroFull
+                ? "mt-12 space-y-4 md:mt-16 md:space-y-6"
+                : "mt-12 grid gap-4 md:mt-16 md:grid-cols-2 md:gap-[3.8%]"
+            }
+          >
             {work.hero.map((image) => (
               <WorkShot
                 key={image.src}
                 src={image.src}
                 alt={image.alt}
-                ratio="831 / 674"
-                sizes="(min-width: 768px) 48vw, 100vw"
+                // heroFull usa a proporção nativa: a tela aparece inteira, sem recorte
+                ratio={
+                  work.heroFull
+                    ? `${image.width} / ${image.height}`
+                    : "831 / 674"
+                }
+                sizes={
+                  work.heroFull ? "100vw" : "(min-width: 768px) 48vw, 100vw"
+                }
               />
             ))}
           </div>
         )}
 
         {work.slug === "ultreya" && <UltreyaBody />}
+        {work.slug === "nuree" && <NureeBody />}
 
         {work.liveUrl && (
           <div className="mt-20 border-t border-vidro pt-10 md:mt-28">
