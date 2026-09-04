@@ -38,9 +38,9 @@ const familjen = Familjen_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "beviq · sistemas e sites feitos à mão",
+  title: "beviq · sistemas e sites",
   description:
-    "Estúdio de uma pessoa em Brasília. Sistemas e sites construídos à mão, com engenharia e opinião contra o digital genérico. Pensados pra durar.",
+    "Sistemas e sites feitos à mão. Engenharia e opinião contra o digital genérico da era agêntica, pensados pra durar.",
 };
 
 export default function RootLayout({
