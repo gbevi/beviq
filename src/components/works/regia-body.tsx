@@ -1,13 +1,13 @@
 import { WorkShot } from "@/components/works/work-shot";
 
 const intro =
-  "Encaminhamento ambulatorial volta quando falta dado ou quando o caso não segue a Nota Técnica. O reg.IA conversa com o profissional antes disso: pergunta o que falta, valida o quadro e classifica o caso como pendente, finalizado ou não elegível.";
+  "Encaminhamento ambulatorial volta quando falta dado ou quando o caso não segue a Nota Técnica. O reg.IA conversa com o profissional antes disso. Pergunta o que falta, valida o quadro e classifica o caso como pendente, finalizado ou não elegível.";
 
 const casosCopy =
-  "Dois casos. Hipertensão resistente a três drogas, com sinal de lesão em órgão-alvo: encaminhamento validado e classificado por risco. Uma pinta antiga, pequena e regular: o sistema não encaminha e sugere a conduta na atenção primária.";
+  "Dois casos. Na hipertensão resistente a três drogas, com sinal de lesão em órgão-alvo, o encaminhamento é validado e classificado por risco. Na pinta antiga, pequena e regular, o sistema não encaminha e sugere a conduta na atenção primária.";
 
 const arquiteturaCopy =
-  "Por trás, um agente por especialidade: cardiologia, dermatologia e endocrinologia. A cada mensagem, o RAG busca no pgvector até três trechos das Notas Técnicas, em vez de colar o documento inteiro no prompt. As respostas saem de uma cascata de LLMs pelo OpenRouter, que passa ao próximo modelo quando um falha ou devolve lixo.";
+  "Por trás, cada especialidade tem o seu agente, um para cardiologia, um para dermatologia e um para endocrinologia. A cada mensagem, o RAG busca no pgvector até três trechos das Notas Técnicas, em vez de colar o documento inteiro no prompt. As respostas saem de uma cascata de LLMs pelo OpenRouter, que passa ao próximo modelo quando um falha ou devolve lixo.";
 
 const proseClass = "text-xl leading-relaxed text-linha/85";
 
