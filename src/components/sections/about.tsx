@@ -1,37 +1,4 @@
-import { MonoLabel, Section, SectionHeading } from "@/components/sections/primitives";
-
-const path = [
-  {
-    when: "2025 — hoje",
-    what: "PET-Saúde · Ministério da Saúde",
-    role: "Pesquisa: chatbot com RAG para encaminhamentos de pacientes no SUS",
-  },
-  {
-    when: "2025 — 2026",
-    what: "Academia Claraval",
-    role: "Engenharia de software: plataforma SaaS construída do zero",
-  },
-  {
-    when: "2025 — 2026",
-    what: "Zago Consultoria Ambiental",
-    role: "Tecnologia: sistema de gestão ambiental, do app de campo aos relatórios",
-  },
-  {
-    when: "2024 — 2025",
-    what: "CJR · Empresa Júnior de Computação",
-    role: "Desenvolvimento fullstack e gestão de projetos",
-  },
-  {
-    when: "2023 — 2027",
-    what: "Universidade de Brasília",
-    role: "Bacharelado em Engenharia de Software · TCC sobre IA na verificação de requisitos",
-  },
-  {
-    when: "2020 — 2022",
-    what: "International Baccalaureate",
-    role: "IB Diploma em Linköping, Suécia",
-  },
-];
+import { Section, SectionHeading } from "@/components/sections/primitives";
 
 export function About() {
   return (
@@ -43,9 +10,12 @@ export function About() {
             Engenheiro de software em formação pela Universidade de Brasília.
             Nascido em Roraima, criado em Brasília.
           </p>
-          <p className="text-linha/70">
-            A formação em engenharia é o que separa um sistema que funciona na
-            demonstração de um sistema que aguenta o segundo ano de operação.
+          <p>
+            Nunca consegui largar um bom problema. O que mais me prende é o
+            que ninguém vê, como os dados se organizam, como as partes
+            conversam, o que segura um sistema de pé. No fim, tudo vira
+            escolha entre trade-offs, e escolher bem é a parte de programar
+            de que eu mais gosto.
           </p>
         </div>
         <div className="justify-self-start md:justify-self-end">
@@ -60,26 +30,6 @@ export function About() {
           />
         </div>
       </div>
-
-      <MonoLabel className="mt-24 mb-6 md:mt-32 md:text-sm">trajetória</MonoLabel>
-      <ul className="border-t border-vidro">
-        {path.map((p) => (
-          <li
-            key={p.what}
-            className="grid gap-1 border-b border-vidro py-5 md:grid-cols-12 md:gap-8 md:py-6"
-          >
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-poeira md:col-span-2 md:text-sm">
-              {p.when}
-            </span>
-            <span className="font-display text-lg tracking-tight text-fosforo md:col-span-4 md:text-xl">
-              {p.what}
-            </span>
-            <span className="text-base leading-relaxed text-linha/80 md:col-span-6">
-              {p.role}
-            </span>
-          </li>
-        ))}
-      </ul>
     </Section>
   );
 }
