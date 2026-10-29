@@ -9,12 +9,6 @@ const casosCopy =
 const arquiteturaCopy =
   "Por trás, um agente por especialidade: cardiologia, dermatologia e endocrinologia. A cada mensagem, o RAG busca no pgvector até três trechos das Notas Técnicas, em vez de colar o documento inteiro no prompt. As respostas saem de uma cascata de LLMs pelo OpenRouter, que passa ao próximo modelo quando um falha ou devolve lixo.";
 
-const redesenhoCopy =
-  "Minha parte mais visível foi redesenhar o front-end como reg.IA, junto com a migração para TypeScript, Tailwind e shadcn. A paleta saiu amostrada pixel a pixel da capa do material do curso. Duas medições mudaram o desenho: o dourado da marca e o amarelo de risco eram a mesma cor a olho nu, e sob daltonismo o vermelho e o verde de risco viravam o mesmo oliva. A ação ficou azul, e todo selo de risco passou a ter cor, rótulo e forma.";
-
-const vozesCopy =
-  "Três vozes tipográficas, com uma regra só: serifada é o que o sistema diz, sem serifa é o que o profissional digita, mono é o que vai para o SISREG.";
-
 const proseClass = "text-xl leading-relaxed text-linha/85";
 
 export function RegiaBody() {
@@ -53,18 +47,6 @@ export function RegiaBody() {
         />
         <p className={`mt-8 max-w-2xl md:mt-10 ${proseClass}`}>
           {arquiteturaCopy}
-        </p>
-      </div>
-
-      {/* redesenho: o que eu fiz no projeto */}
-      <div className="mt-24 grid gap-8 md:mt-32 md:grid-cols-12 md:gap-12">
-        <p className={`md:col-span-7 md:col-start-1 ${proseClass}`}>
-          {redesenhoCopy}
-        </p>
-        <p
-          className={`md:col-span-4 md:col-start-9 md:self-end text-linha/60 ${proseClass}`}
-        >
-          {vozesCopy}
         </p>
       </div>
     </div>
