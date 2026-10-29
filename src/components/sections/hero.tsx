@@ -24,9 +24,7 @@ export function Hero() {
             <CyclingWord words={WORDS} className="text-fosforo" />.
           </h1>
           <p className="mt-8 max-w-[44ch] text-base leading-relaxed text-linha/85 md:text-lg">
-            Sistemas e <span className="text-brasa">sites</span> sob medida.
-            <br />
-            Feitos à mão, calibrados caso a caso.
+            Gabriel Bevilaqua, engenheiro de software em Brasília.
           </p>
         </div>
       </div>

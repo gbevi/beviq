@@ -40,17 +40,12 @@ export function About() {
       <div className="grid gap-12 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-20">
         <div className="max-w-3xl space-y-6 text-base leading-relaxed text-linha md:text-lg">
           <p>
-            Sou o Gabriel Bevilaqua, engenheiro de software em formação pela
-            Universidade de Brasília. Nascido em Roraima, criado em Brasília,
-            com dois anos de ensino médio na Suécia.
-          </p>
-          <p>
-            Construo sistemas e sites do desenho ao deploy, e pesquiso como a
-            IA generativa pode ajudar a fazer software melhor.
+            Engenheiro de software em formação pela Universidade de Brasília.
+            Nascido em Roraima, criado em Brasília.
           </p>
           <p className="text-linha/70">
-            A engenharia é o que separa um sistema que funciona na demonstração
-            de um sistema que aguenta o segundo ano de operação.
+            A formação em engenharia é o que separa um sistema que funciona na
+            demonstração de um sistema que aguenta o segundo ano de operação.
           </p>
         </div>
         <div className="justify-self-start md:justify-self-end">
@@ -59,7 +54,7 @@ export function About() {
             alt="Gabriel Bevilaqua sentado ao lado da sua mesa de trabalho"
             width={749}
             height={1000}
-            className="h-auto w-[240px] border border-vidro grayscale md:w-[320px]"
+            className="relative z-[3] h-auto w-[240px] border border-vidro md:w-[320px]"
             loading="lazy"
             decoding="async"
           />

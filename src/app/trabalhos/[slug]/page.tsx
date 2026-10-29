@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { ScrambleText } from "@/components/scramble-text";
 import { NureeBody } from "@/components/works/nuree-body";
+import { RegiaBody } from "@/components/works/regia-body";
 import { SiteLink } from "@/components/works/site-link";
 import { UltreyaBody } from "@/components/works/ultreya-body";
 import { WorkShot } from "@/components/works/work-shot";
@@ -100,6 +101,7 @@ export default async function WorkPage({ params }: Params) {
 
         {work.slug === "ultreya" && <UltreyaBody />}
         {work.slug === "nuree" && <NureeBody />}
+        {work.slug === "regia" && <RegiaBody />}
 
         {work.liveUrl && (
           <div className="mt-20 border-t border-vidro pt-10 md:mt-28">

@@ -85,6 +85,25 @@ export const works: Work[] = [
       },
     ],
   },
+  {
+    slug: "regia",
+    id: "004",
+    title: "reg.IA",
+    category: "Saúde pública · IA",
+    location: "Brasília, Brasil",
+    heroFull: true,
+    liveUrl: "https://nanashii76.github.io/PETSAUDE-chatbot/",
+    intro:
+      "Assistente de regulação clínica do SUS-DF, feito em equipe no PET-Saúde. O profissional da UBS descreve o caso do paciente, e o sistema confere os critérios das Notas Técnicas da SES-DF antes de gerar o texto do encaminhamento para o SISREG.",
+    hero: [
+      {
+        src: "/trabalhos/regia/inicio.png",
+        alt: "Tela inicial do reg.IA com o campo para descrever o quadro clínico e sugestões de casos",
+        width: 1805,
+        height: 957,
+      },
+    ],
+  },
 ];
 
 export function getWork(slug: string): Work | undefined {
