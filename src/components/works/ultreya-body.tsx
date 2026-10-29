@@ -3,7 +3,7 @@ import { WorkCarousel } from "@/components/works/work-carousel";
 import { WorkVideo } from "@/components/works/work-video";
 
 const intro =
-  "O ponto de partida: um site feito por IA. Fonte genérica, estrutura genérica, o padrão que o mercado já cansou de ver. Ficamos com o que importava, os dias e o método, e refizemos o resto à mão. Pra um público de mulheres em travessia terapêutica, imagem e prosa, pra sentir antes de explicar.";
+  "O ponto de partida: um site feito por IA. Fonte genérica, estrutura genérica, o padrão que o mercado já cansou de ver. Fiquei com o que importava, os dias e o método, e refiz o resto à mão. Pra um público de mulheres em travessia terapêutica, imagem e prosa, pra sentir antes de explicar.";
 
 const hoverCopy =
   "As fotos não ficam paradas: o mouse passa, elas respondem. Imagem por toda parte, da hero às frases de impacto. Os caminhos que se percorre com os pés e com a alma.";
@@ -54,7 +54,7 @@ export function UltreyaBody() {
             beforeImage="/trabalhos/ultreya/antes-dias.png"
             afterVideo="ultreya-mapa"
             altBefore="Seção da jornada no site anterior, feito por IA"
-            altAfter="Seção da jornada redesenhada pela beviq, com a rota animada no mapa"
+            altAfter="Seção da jornada redesenhada, com a rota animada no mapa"
             ratio="1836 / 1026"
           />
         </div>

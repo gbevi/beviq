@@ -25,7 +25,7 @@ export async function generateMetadata({
   if (!work) return {};
 
   return {
-    title: `${work.id} · ${work.title} · beviq`,
+    title: `${work.id} · ${work.title} · Gabriel Bevilaqua`,
     description: work.intro,
   };
 }

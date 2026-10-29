@@ -38,9 +38,9 @@ const familjen = Familjen_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "beviq · sistemas e sites",
+  title: "Gabriel Bevilaqua · engenheiro de software",
   description:
-    "Sistemas e sites feitos à mão. Engenharia e opinião contra o digital genérico da era agêntica, pensados pra durar.",
+    "Portfólio de Gabriel Bevilaqua, engenheiro de software em Brasília. Sistemas, sites e pesquisa em IA aplicada a software.",
 };
 
 export default function RootLayout({

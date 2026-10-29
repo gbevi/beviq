@@ -19,7 +19,7 @@ export type Work = {
   wip?: boolean;
   /** hero em coluna única e sem recorte, para telas largas que precisam ser lidas */
   heroFull?: boolean;
-  /** site no ar do cliente, se houver */
+  /** site do projeto no ar, se houver */
   liveUrl?: string;
   /** parágrafo de abertura da página do trabalho */
   intro?: string;

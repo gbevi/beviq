@@ -18,9 +18,9 @@ export function Hero() {
 
         <div className="max-w-[68rem]">
           <h1 className="font-display text-[clamp(2.75rem,9vw,7rem)] font-black uppercase leading-[0.92] tracking-[-0.04em] text-linha">
-            nascidos da engenharia,
+            nascido da engenharia,
             <br />
-            movidos por{" "}
+            movido por{" "}
             <CyclingWord words={WORDS} className="text-fosforo" />.
           </h1>
           <p className="mt-8 max-w-[44ch] text-base leading-relaxed text-linha/85 md:text-lg">

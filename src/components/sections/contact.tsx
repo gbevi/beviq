@@ -17,6 +17,16 @@ export function Contact() {
         </div>
 
         <div>
+          <MonoLabel className="mb-3 md:text-sm">linkedin</MonoLabel>
+          <ContactLink
+            href="https://linkedin.com/in/gabrielbevilaqua"
+            text="/in/gabrielbevilaqua"
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+        </div>
+
+        <div>
           <MonoLabel className="mb-3 md:text-sm">whatsapp</MonoLabel>
           <ContactLink
             href="https://wa.me/5561992790309"
@@ -28,7 +38,7 @@ export function Contact() {
       </div>
 
       <MonoLabel as="footer" className="mt-32 md:mt-40 md:text-sm">
-        brasília · © 2026
+        gabriel bevilaqua · brasília · © 2026
       </MonoLabel>
     </Section>
   );

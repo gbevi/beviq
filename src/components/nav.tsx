@@ -4,7 +4,6 @@ import { ScrambleText } from "@/components/scramble-text";
 
 const items = [
   { href: "/#trabalhos", label: "trabalhos" },
-  { href: "/#servicos", label: "serviços" },
   { href: "/#sobre", label: "sobre" },
   { href: "/#contato", label: "contato" },
 ];
